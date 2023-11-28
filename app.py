@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 from streamlit_gsheets import GSheetsConnection
 
-conn = st.connection("gsheets",type=GSheetsConnection)
-df = conn.read(worksheet= "318772191", nrows=25)
+conn = st.experimental_connection("gsheets",type=GSheetsConnection)
+df = conn.read(spreadsheet = "", nrows=25)
 
 st.title('Pleasantrees Product Explorer')
 x = st.slider('Select a value')
