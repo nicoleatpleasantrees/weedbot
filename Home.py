@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import replicate
-import os
 from st_files_connection import FilesConnection
 
 st.set_page_config(
