@@ -1,4 +1,6 @@
 streamlit
 pandas
 numpy
-st-gsheets-connection
+st_files_connection
+replicate
+
