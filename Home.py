@@ -1,11 +1,10 @@
 import streamlit as st
 import pandas as pd
-import os
 import replicate
 from st_files_connection import FilesConnection
 
 st.set_page_config(
-    page_title="Pleasantrees Weedbot",
+    page_title="Pleasantrees Product Explorer",
     page_icon="🌿",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -38,13 +37,14 @@ with st.sidebar:
 
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    max_length = st.sidebar.slider('max_length', min_value=64, max_value=4096, value=512, step=8)
+    max_length = st.sidebar.slider('max_length', min_
 
 conn = st.connection('s3', type=FilesConnection)
 df = conn.read('data-streamlit-nicole/recommender_text_v3 - rec_text.csv', input_format='csv', ttl=600)
 
-
-st.subheader('Pleasantrees Product Explorer')
+st.image('https://i.ibb.co/FJR389Y/Pleasantrees-logo-sxs-white.png', width=400)
+st.header('Cannabis Experience Optimization Engine')
+st.text('But you can call me Weedbot')
 # st.dataframe(df)
 n = len(pd.unique(df['product_id']))
 st.metric('Number of Products', n)
@@ -59,7 +59,7 @@ add_selectbox = st.sidebar.selectbox(
 
 if add_selectbox == 'Ask AI!':
     message = st.chat_message("assistant")
-    message.write("Hello, human. Would you like my help finding a product?")
+    message.write("Hello, human. You can call me Weedbot. Would you like my help finding a product?")
 elif add_selectbox == 'Browse by brand':
     st.write('You selected brand 🎆')
 else:
@@ -67,44 +67,3 @@ else:
 if "messages" not in st.session_state.keys():
     st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
 
-# Display or clear chat messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.write(message["content"])
-
-
-def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "Hi, human. What now?"}]
-st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
-
-# Function for generating LLaMA2 response
-def generate_llama2_response(prompt_input):
-    string_dialogue = "You are a helpful assistant. You do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'."
-    for dict_message in st.session_state.messages:
-        if dict_message["role"] == "user":
-            string_dialogue += "User: " + dict_message["content"] + "\n\n"
-        else:
-            string_dialogue += "Assistant: " + dict_message["content"] + "\n\n"
-    output = replicate.run(llm, prompt_input={"prompt": f"{string_dialogue} {prompt_input} Assistant: ",
-                                  "temperature":temperature, "top_p":top_p, "max_length":max_length, "repetition_penalty":1})
-    return output
-
-# User-provided prompt
-if prompt := st.chat_input(disabled=not replicate_api):
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
-
-# Generate a new response if last message is not from assistant
-if st.session_state.messages[-1]["role"] != "assistant":
-    with st.chat_message("assistant"):
-        with st.spinner("Thinking..."):
-            response = generate_llama2_response(prompt)
-            placeholder = st.empty()
-            full_response = ''
-            for item in response:
-                full_response += item
-                placeholder.markdown(full_response)
-            placeholder.markdown(full_response)
-    message = {"role": "assistant", "content": full_response}
-    st.session_state.messages.append(message)
