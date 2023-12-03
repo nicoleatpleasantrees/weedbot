@@ -37,7 +37,7 @@ with st.sidebar:
 
     temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=5.0, value=0.1, step=0.01)
     top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    max_length = st.sidebar.slider('max_length', min_
+    max_length = st.sidebar.slider('max_length'), min_
 
 conn = st.connection('s3', type=FilesConnection)
 df = conn.read('data-streamlit-nicole/recommender_text_v3 - rec_text.csv', input_format='csv', ttl=600)
