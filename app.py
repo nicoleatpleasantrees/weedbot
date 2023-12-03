@@ -29,6 +29,10 @@ m = len(pd.unique(df['brand_name']))
 st.metric('Number of Brands', m)
 cat = df.category
 
+message = st.chat_message("assistant")
+message.write("Hello, human. Would you like my help finding a product?")
+
+
 add_selectbox = st.sidebar.selectbox(
     'How would you like to find products today?',
     ('Browse by category', 'Browse by brand', 'Ask AI!')
