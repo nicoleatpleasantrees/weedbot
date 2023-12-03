@@ -1,6 +1,6 @@
 streamlit
-pandas
-numpy
-st_files_connection
 replicate
+pandas
+st_files_connection
+
 
