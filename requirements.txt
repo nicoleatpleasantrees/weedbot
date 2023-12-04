@@ -2,5 +2,6 @@ streamlit
 replicate
 pandas
 st_files_connection
+hugchat
 
 
