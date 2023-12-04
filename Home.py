@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 from st_files_connection import FilesConnection
-
+from hugchat import hugchat
+from hugchat.login import Login
 
 st.set_page_config(
     page_title="Pleasantrees Product Explorer",
