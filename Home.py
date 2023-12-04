@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from st_files_connection import FilesConnection
 
+
 st.set_page_config(
     page_title="Pleasantrees Product Explorer",
     page_icon="🌿",
@@ -9,7 +10,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.image('https://i.ibb.co/FJR389Y/Pleasantrees-logo-sxs-white.png', width=400)
+st.image('https://i.postimg.cc/GpxSW0bG/Pleasantrees-logo-sxs-white.png', width=400)
 
 with st.sidebar:
     st.header('Product Explorer')
