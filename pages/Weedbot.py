@@ -20,7 +20,7 @@ with st.sidebar:
           else:
               st.success('Login successful! You may now proceed to the weed...')       
 if "messages" not in st.session_state.keys():
-    st.session_state.messages = [{"role": "assistant", "content": "What questions fo you have for the Weedbot🔮?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "What questions do you have for the Weedbot🔮?"}]
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.write(message["content"])
