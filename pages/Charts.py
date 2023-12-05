@@ -6,7 +6,7 @@ st.image('https://i.ibb.co/FJR389Y/Pleasantrees-logo-sxs-white.png', width=400)
 
 conn = st.connection('s3', type=FilesConnection)
 df = conn.read('data-streamlit-nicole/strains_for_plotly.csv')
-
+df2 = conn.read('data-streamlit-nicole/strain_match_product.csv')
 
 st.subheader("Strains by potency")
 st.markdown("This chart shows the distribution of strains by potency range.")
@@ -20,6 +20,7 @@ fig = px.histogram(
 st.plotly_chart(fig, use_container_width=False,sharing='streamlit', theme='streamlit')
 
 st.subheader("Strains by type")
+st.markdown("This chart shows the distribution of strains by type.")
 
 fig_2 = px.treemap(
     data_frame=df, path=[px.Constant("all"), "type", "strain"],
