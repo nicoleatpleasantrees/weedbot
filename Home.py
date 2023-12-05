@@ -14,7 +14,7 @@ st.image('https://i.postimg.cc/GpxSW0bG/Pleasantrees-logo-sxs-white.png', width=
 with st.sidebar:
     st.header('Product Explorer')
     st.subheader('Explore our products and find the right one for you!')
-    st.selectbox('Select a product category', ['Flower', 'Vape', 'Edible', 'Concentrate', 'Topical', 'Accessory'])
+    st.selectbox('Select a product category', ['Flower', 'Vape', 'Edible', 'Concentrate', 'Topical', 'Beverage'])
     st.caption('Made with ❤️ by Nicole')
 
     
