@@ -7,8 +7,6 @@ from hugchat.login import Login
 st.set_page_config(
     page_title="Pleasantrees Product Explorer",
     page_icon="🌿",
-    layout="wide",
-    initial_sidebar_state="expanded",
 )
 
 st.image('https://i.postimg.cc/GpxSW0bG/Pleasantrees-logo-sxs-white.png', width=400)
@@ -16,4 +14,7 @@ st.image('https://i.postimg.cc/GpxSW0bG/Pleasantrees-logo-sxs-white.png', width=
 with st.sidebar:
     st.header('Product Explorer')
     st.subheader('Explore our products and find the right one for you!')
+    st.selectbox('Select a product category', ['Flower', 'Vape', 'Edible', 'Concentrate', 'Topical', 'Accessory'])
     st.caption('Made with ❤️ by Nicole')
+
+    
