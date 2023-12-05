@@ -25,7 +25,7 @@ fig_2 = px.treemap(
     data_frame=df, path=[px.Constant("all"), "type", "strain"],
     values="average THC",
     color="average THC",
-    color_continuous_scale="RdBu",
+    color_continuous_scale="plasma",
     hover_data=["average THC"],
     )
 
