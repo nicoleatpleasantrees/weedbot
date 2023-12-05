@@ -4,5 +4,6 @@ pandas
 st_files_connection
 hugchat
 s3fs
+plotly
 
 
